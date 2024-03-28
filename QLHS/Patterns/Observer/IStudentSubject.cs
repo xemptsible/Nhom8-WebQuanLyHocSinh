@@ -6,7 +6,7 @@ using System.Web;
 
 namespace QLHS.Patterns.Observer
 {
-    internal interface IGrade
+    internal interface IStudentSubject
     {
         int Update(HocSinh hs);
     }

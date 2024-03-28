@@ -266,7 +266,7 @@
     <Compile Include="Patterns\Abtract_Factory\IRoleChecker.cs" />
     <Compile Include="Patterns\Abtract_Factory\IRoleCheckerFactory.cs" />
     <Compile Include="Patterns\Observer\GradeObservable.cs" />
-    <Compile Include="Patterns\Observer\IGrade.cs" />
+    <Compile Include="Patterns\Observer\IStudentSubject.cs" />
     <Compile Include="Patterns\Observer\IRequest.cs" />
     <Compile Include="Patterns\Observer\RequestObservable.cs" />
     <Compile Include="Patterns\Prototype\ICloneable.cs" />

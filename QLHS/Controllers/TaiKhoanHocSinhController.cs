@@ -38,7 +38,7 @@ namespace QLHS.Controllers
                 Session["TenHS"] = check.HoTen;
                 Session["MaHS"] = check.MaHS;
 
-                IGrade grade = new GradeObservable();
+                IStudentSubject grade = new GradeObservable();
                 int count = grade.Update(hs);
                 Session["NotificationCount_Student"] = count;
 

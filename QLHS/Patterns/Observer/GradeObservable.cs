@@ -6,7 +6,7 @@ using System.Web;
 
 namespace QLHS.Patterns.Observer
 {
-    public class GradeObservable : IGrade
+    public class GradeObservable : IStudentSubject
     {
         public int Update(HocSinh hs)
         {
