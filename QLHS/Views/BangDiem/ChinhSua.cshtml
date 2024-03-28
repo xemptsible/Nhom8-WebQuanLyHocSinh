@@ -1,0 +1,86 @@
+﻿@model QLHS.Models.BangDiem
+
+@{
+    ViewBag.Title = "Chỉnh Sửa";
+    Layout = "~/Views/Shared/_LayoutMainAdmin.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <section class="w3l-hotair-form">
+            <div class="container">
+                <!-- /form -->
+                <div class="workinghny-form-grid">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="main-hotair">
+                            <div class="content-wthree">
+                                @Html.AntiForgeryToken()
+                                <h3>Cập nhật điểm</h3>
+                                <form action="#" method="post">
+                                    <div class="user-detail">
+                                        <div class="input-box">
+                                            <span class="detail">Mã Bảng Điểm</span>
+                                            <div class="col-r-12">
+                                                @Html.EditorFor(model => model.MaBD, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.MaBD, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Mã Học Sinh</span>
+                                            <div class="col-r-12">
+                                                @Html.EditorFor(model => model.MaHS, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.MaHS, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Họ Tên Học Sinh</span>
+                                            <div class="col-r-12">
+                                                @Html.DisplayFor(model => model.TenHS, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                            <br/>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Mã Môn</span>
+                                            <div class="col-r-12">
+                                                @Html.EditorFor(model => model.MaMon, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.MaMon, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Họ Tên Học Sinh</span>
+                                            <div class="col-r-12">
+                                                @Html.DisplayFor(model => model.TenHS, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                            <br />
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Điểm</span>
+                                            <div class="col-r-12">
+                                                @Html.EditorFor(model => model.Diem, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Diem, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn" type="submit">Save</button>
+                                    <h1></h1>
+                                    <div>
+                                        @Html.ActionLink("Trở về", "DanhSachBangDiem")
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="w3l_form align-self">
+                                <div class="left_grid_info">
+                                    <img src="~/images/1.png" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <!-- //form -->
+            </div>
+        </section>
+    </section>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

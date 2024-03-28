@@ -1,0 +1,92 @@
+﻿@model IEnumerable<QLHS.Models.YeuCau>
+
+@{
+    ViewBag.Title = "DanhSachYeuCau";
+    Layout = "~/Views/Shared/_LayoutMainAdmin.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <h2>Danh Sách Yêu Cầu</h2>
+        @using (Html.BeginForm("DanhSachYeuCau", "YeuCau", FormMethod.Get))
+        {
+            <div class="form-group form-inline">
+                <h4> Tìm giáo viên: @Html.TextBox("SearchString", "", new { @class = "form-control" })  <input type="submit" class="btn btn-default" value="Tìm" /> </h4>
+            </div>
+            <table class="table">
+                <tr>
+                    <th style="color:black">
+                        <span>Mã Yêu cầu</span>
+                    </th>
+                    <th style="color:black">
+                        <span>Mã giáo viên</span>
+                    </th>
+                    <th style="color:black">
+                        <span>Tên giáo viên</span>
+                    </th>
+                    <th style="color:black">
+                        <span>Nội dung</span>
+                    </th>
+                    <th style="color:black">
+                        <span>Lí do</span>
+                    </th>
+                    <th style="color:black">
+                        <span>Trạng Thái</span>
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.MaYC)
+                        </td>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.MaGV)
+                        </td>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.TenGVCN)
+                        </td>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.NoiDung)
+                        </td>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.LiDo)
+                        </td>
+                        <td style="color:black">
+                            @if (item.TrangThai)
+                            {
+                                <span class="text-success">Đã xử lí</span>
+                            }
+                            else
+                            {
+                                <span class="text-danger">Đang xử lí</span>
+                            }
+                            <button class="btn btn-primary" style="background-color:#0094ff" onclick="submitForm('@item.MaYC', @item.TrangThai)">Set</button>
+                        </td>
+                        <td style="color:black">
+                            <button class="btn" onclick="NavigateToDelete('@item.MaYC', event)">Xóa</button>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        }
+
+    </section>
+</section>
+
+<script>
+    function submitForm(id, status) {
+        $.post("@Url.Action("ChinhSuaTrangThaiYC", "YeuCau")", { id: id, status: !status }, function () {
+            location.reload();
+        });
+    }
+
+    function NavigateToDelete(id, event) {
+        event.preventDefault();
+        window.location.href = "/ViPham/Xoa_GV/" + id;
+    }
+</script>
+
+

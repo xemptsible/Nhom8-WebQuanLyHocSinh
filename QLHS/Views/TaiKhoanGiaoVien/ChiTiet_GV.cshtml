@@ -1,0 +1,72 @@
+﻿@model QLHS.Models.GiaoVien
+
+@{
+    ViewBag.Title = "Chi Tiết";
+    Layout = "~/Views/Shared/_LayoutMainGV.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <section class="w3l-hotair-form">
+            <div class="container">
+                <!-- /form -->
+                <div class="workinghny-form-grid">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="main-hotair">
+                            <div class="content-wthree">
+                                @Html.AntiForgeryToken()
+                                <h3>Thông tin cá nhân</h3>
+                                <form action="#" method="post">
+                                    <div class="user-detail">
+                                        <div class="input-box">
+                                            <span class="detail">Mã Giáo Viên: @Html.DisplayFor(model => model.MaGV)</span>
+                                        </div>
+                                        <h1></h1>
+                                        <div class="input-box">
+                                            <span class="detail">Họ và tên: @Html.DisplayFor(model => model.HoTenGV)</span>
+                                            <h1></h1>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Giới Tính: @Html.DisplayFor(model => model.GioiTinh)</span>
+                                            <h1></h1>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Ngày Sinh: @Html.DisplayFor(model => model.NgaySinh)</span>
+                                            <h1></h1>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Địa Chỉ: @Html.DisplayFor(model => model.DiaChi)</span>
+                                            <h1></h1>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Vai Trò: @Html.DisplayFor(model => model.Role)</span>
+                                            <h1></h1>
+                                        </div>
+                                    </div>
+                                    <h1></h1>
+                                    <button id="CapNhat" style="color:#fff">Cập Nhật</button>
+                                </form>
+                            </div>
+                            <div class="w3l_form align-self">
+                                <div class="left_grid_info">
+                                    <img src="~/images/1.png" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <!-- //form -->
+            </div>
+        </section>
+    </section>
+</section>
+
+<script>
+    document.getElementById("CapNhat").onclick = function(event) {
+        event.preventDefault();
+
+        var id_teacher = "@Session["MaGV"]";
+        window.location.href = "/TaiKhoanGiaoVien/ChinhSua_GV/" + id_teacher;
+    };
+</script>

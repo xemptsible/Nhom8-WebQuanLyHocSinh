@@ -1,0 +1,74 @@
+﻿@model IEnumerable<QLHS.Models.YeuCau>
+
+@{
+    ViewBag.Title = "PhanHoi";
+    Layout = "~/Views/Shared/_LayoutMainGV.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <h2>Phản Hồi Yêu Cầu</h2>
+        @using (Html.BeginForm("PhanHoi", "YeuCau", FormMethod.Get))
+        {
+            <table class="table">
+                <tr>
+                    <th style="color:black">
+                        <span>Mã Yêu cầu</span>
+                    </th>
+                    <th style="color:black">
+                        <span>Mã giáo viên</span>
+                    </th>
+                    <th style="color:black">
+                        <span>Nội dung</span>
+                    </th>
+                    <th style="color:black">
+                        <span>Lí do</span>
+                    </th>
+                    <th style="color:black">
+                        <span>Trạng Thái</span>
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.MaYC)
+                        </td>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.MaGV)
+                        </td>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.NoiDung)
+                        </td>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.LiDo)
+                        </td>
+                        <td style="color:black">
+                            @if (item.TrangThai)
+                            {
+                                <span class="text-success">Đã xử lí</span>
+                            }
+                            else
+                            {
+                                <span class="text-danger">Chờ xử lí</span>
+                            }
+                        </td>
+                        <td style="color:black">
+                            <button class="btn" onclick="NavigateToDelete('@item.MaYC', event)">Xóa</button>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        }
+
+    </section>
+</section>
+
+<script>
+    function NavigateToDelete(id, event) {
+        event.preventDefault();
+        window.location.href = "/ViPham/Xoa_GV/" + id;
+    }
+</script>

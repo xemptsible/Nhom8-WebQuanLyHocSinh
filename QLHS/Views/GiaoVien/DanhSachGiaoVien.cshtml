@@ -1,0 +1,101 @@
+﻿@model IEnumerable<QLHS.Models.GiaoVien>
+
+@{
+    ViewBag.Title = "Danh Sách Giáo Viên";
+    Layout = "~/Views/Shared/_LayoutMainAdmin.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <h2>Danh Sách Giáo Viên</h2>
+        @using (Html.BeginForm("DanhSachGiaoVien", "GiaoVien", FormMethod.Get))
+        {
+            <div class="form-group form-inline">
+                <h4> Tìm giáo viên: @Html.TextBox("SearchString", "", new { @class = "form-control" })  <input type="submit" class="btn btn-default" value="Tìm" /> </h4>
+            </div>
+            <table class="table">
+                <tr>
+                    <th style="color:black">
+                        <span>Mã Giáo Viên</span>
+                    </th>
+                    <th style="color:black">
+                        <span>Họ Tên Giáo Viên</span>
+                    </th>
+                    <th style="color:black">
+                        <span>Giới Tính</span>
+                    </th>
+                    <th style="color:black">
+                        <span>Ngày Sinh</span>
+                    </th>
+                    <th style="color:black">
+                        <span>Địa Chỉ</span>
+                    </th>
+                    <th style="color:black">
+                        <span>SĐT</span>
+                    </th>
+                    <th style="color:black">
+                        <span>Vai Trò</span>
+                    </th>
+                    <th style="color:black">
+                        <span>Trạng Thái</span>
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.MaGV)
+                        </td>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.HoTenGV)
+                        </td>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.GioiTinh)
+                        </td>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.NgaySinh)
+                        </td>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.DiaChi)
+                        </td>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.SDT)
+                        </td>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.Role)
+                        </td>
+                        <td style="color:black">
+                            @if (item.TrangThai)
+                            {
+                                <span class="text-success">Đã cấp quyền</span>
+                            }
+                            else
+                            {
+                                <span class="text-danger">Chưa có quyền</span>
+                            }
+                            <button class="btn btn-primary" style="background-color:#0094ff" onclick="submitForm('@item.MaGV', @item.TrangThai)">Chọn</button>
+                        </td>
+                        <td style="color:black">
+                            <button class="btn">@Html.ActionLink("Cập nhật", "ChinhSua", new { id = item.MaGV }) </button>
+                            <button class="btn">@Html.ActionLink("Xóa", "Xoa", new { id = item.MaGV }) </button>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        }
+
+    </section>
+</section>
+
+<script>
+    function submitForm(id, status) {
+        $.post("@Url.Action("ChinhSuaTrangThai", "GiaoVien")", { id: id, status: !status },
+            function () {
+            location.reload();
+        });
+    }
+</script>
+

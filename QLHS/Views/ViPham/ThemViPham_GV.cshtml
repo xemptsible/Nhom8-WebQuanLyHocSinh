@@ -1,0 +1,95 @@
+﻿@model QLHS.Models.ViPham
+
+@{
+    ViewBag.Title = "Thêm Vi Phạm";
+    Layout = "~/Views/Shared/_LayoutMainGV.cshtml";
+}
+
+<style>
+    .field-validation-error {
+        color: red;
+    }
+</style>
+
+<section id="main-content">
+    <section class="wrapper">
+        <section class="w3l-hotair-form">
+            <div class="container">
+                <!-- /form -->
+                <div class="workinghny-form-grid">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="main-hotair">
+                            <div class="content-wthree">
+                                @Html.AntiForgeryToken()
+                                <h3>Thêm Vi Phạm</h3>
+                                <form action="#" method="post">
+                                    <div class="user-detail">
+                                        <div class="input-box">
+                                            <span class="detail">Mã Học Sinh</span>
+                                            @Html.DropDownListFor(model => model.MaHS, (SelectList)ViewBag.selectStudent, "Chọn Mã Học Sinh", new { @class = "form-control", @id = "get_id_student" })
+                                        </div>
+                                        <br />
+                                        <div class="input-box">
+                                            <span class="detail">Tên Học Sinh</span>
+                                            <span id="spanNameStudent"></span>
+                                        </div>
+                                        <br />
+                                        <div class="input-box">
+                                            <span class="detail">Lỗi Vi Phạm</span>
+                                            @Html.EditorFor(model => model.LoiVP, new { htmlAttributes = new { @class = "form-control", style = "field-validation-error" } })
+                                            @Html.ValidationMessageFor(model => model.LoiVP, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Mức Độ</span>
+                                            @Html.EditorFor(model => model.MucDo, new { htmlAttributes = new { @class = "form-control", style = "field-validation-error" } })
+                                            @Html.ValidationMessageFor(model => model.MucDo, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Ngày</span>
+                                            @Html.EditorFor(model => model.Ngay, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                            @Html.ValidationMessageFor(model => model.Ngay, "", new { @class = "text-danger" })
+                                        </div>
+                                        @if (ViewBag.ErrorMessage != null)
+                                        {
+                                            <div class="input-box" style="color: red">
+                                                <span class="detail">@ViewBag.ErrorMessage</span>
+                                            </div>
+                                        }
+                                    </div>
+                                    <button class="btn" type="submit">Thêm</button>
+                                </form>
+                            </div>
+                            <div class="w3l_form align-self">
+                                <div class="left_grid_info">
+                                    <img src="~/images/1.png" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <!-- //form -->
+            </div>
+        </section>
+    </section>
+</section>
+
+<script>
+    $(document).ready(function () {
+        $("#get_id_student").change(function () {
+            var id_student = $(this).val();
+            if (id_student) {
+                $.ajax({
+                    url: '@Url.Action("GetNameStudent", "ViPham")',
+                    type: 'GET',
+                    data: { id_student: id_student },
+                    success: function (data) {
+                        $("#spanNameStudent").text(data);
+                    }
+                });
+            } else {
+                $("#spanNameStudent").text('');
+            }
+        });
+    });
+</script>

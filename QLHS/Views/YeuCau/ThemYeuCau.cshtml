@@ -1,0 +1,66 @@
+﻿@model QLHS.Models.YeuCau
+
+@{
+    ViewBag.Title = "ThemYeuCau";
+    Layout = "~/Views/Shared/_LayoutMainGV.cshtml";
+}
+
+<style>
+    .field-validation-error {
+        color: red;
+    }
+</style>
+
+<section id="main-content">
+    <section class="wrapper">
+        <section class="w3l-hotair-form">
+            <div class="container">
+                <!-- /form -->
+                <div class="workinghny-form-grid">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="main-hotair">
+                            <div class="content-wthree">
+                                @Html.AntiForgeryToken()
+                                <h3>Thêm Yêu Cầu Sửa Điểm</h3>
+                                <form action="#" method="post">
+                                    <div class="user-detail">
+                                        <div class="input-box">
+                                            <span class="detail">Nội Dung</span>
+                                            @Html.EditorFor(model => model.NoiDung, new { htmlAttributes = new { @class = "form-control", style = "field-validation-error" } })
+                                            @Html.ValidationMessageFor(model => model.NoiDung, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Lí Do</span>
+                                            @Html.EditorFor(model => model.LiDo, new { htmlAttributes = new { @class = "form-control", style = "field-validation-error" } })
+                                            @Html.ValidationMessageFor(model => model.LiDo, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Trạng Thái</span>
+                                            @Html.CheckBoxFor(model => model.TrangThai, new { htmlAttributes = new { @class = "form-control", style = "field-validation-error" } })
+                                            @Html.ValidationMessageFor(model => model.TrangThai, "Chờ xử lí", new { @class = "text-danger" })
+                                        </div>
+                                        @if (ViewBag.Error != null)
+                                        {
+                                            <div class="input-box">
+                                                <span class="detail" style="color: red">@ViewBag.Error</span>
+                                            </div>
+                                        }
+                                    </div>
+                                    <button class="btn" type="submit">Thêm</button>
+                                </form>
+                            </div>
+                            <div class="w3l_form align-self">
+                                <div class="left_grid_info">
+                                    <img src="~/images/1.png" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <!-- //form -->
+            </div>
+        </section>
+    </section>
+</section>
+

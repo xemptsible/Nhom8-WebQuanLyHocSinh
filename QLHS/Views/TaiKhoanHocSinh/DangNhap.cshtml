@@ -1,0 +1,59 @@
+﻿@model QLHS.Models.HocSinh
+
+@{
+    ViewBag.Title = "Đăng Nhập";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<style>
+    .field-validation-error {
+        color: red;
+    }
+</style>
+
+<section class="w3l-hotair-form">
+    <div class="container">
+        <!-- /form -->
+        <div class="workinghny-form-grid">
+            @using (Html.BeginForm("TaiKhoanDangNhap", "TaiKhoanHocSinh"))
+            {
+                @Html.AntiForgeryToken()
+                <div class="main-hotair">
+                    <div class="content-wthree">
+                        <h3>Đăng Nhập</h3>
+                        <br>
+                        <form action="#" method="post">
+                            <div class="input-box">
+                                <span class="detail">Mã Học Sinh</span>
+                                <h1></h1>
+                                @Html.TextBoxFor(model => model.MaHS, new { style = "field-validation-error" })
+                                @Html.ValidationMessageFor(model => model.MaHS, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="input-box">
+                                <span class="detail">Mật Khẩu</span>
+                                <h1></h1>
+                                <input type="password" @Html.TextBoxFor(model => model.MATKHAU, new { htmlAttributes = new { @class = "form-control", style = "field-validation-error" } })
+                                       @Html.ValidationMessageFor(model => model.MATKHAU, "", new { @class = "text-danger" })
+                            </div>
+                            @if (ViewBag.Error != null)
+                            {
+                                <div class="input-box">
+                                    <span class="detail" style="color: red">@ViewBag.Error</span>
+                                </div>
+                            }
+                            <br>
+                            <button class="btn" type="submit">Đăng nhập</button>
+                        </form>
+                    </div>
+                    <div class="w3l_form align-self">
+                        <div class="left_grid_info">
+                            <img src="~/images/1.png" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <!-- //form -->
+    </div>
+</section>
+

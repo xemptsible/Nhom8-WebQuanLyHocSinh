@@ -1,0 +1,76 @@
+﻿@model  IEnumerable<QLHS.Models.BangDiem>
+
+@{
+    ViewBag.Title = "Danh sách bảng điểm";
+    Layout = "~/Views/Shared/_LayoutMainAdmin.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <h2>Danh Sách Bảng Điểm</h2>
+        @using (Html.BeginForm("DanhSachBangDiem", "BangDiem", FormMethod.Get))
+        {
+            <div class="form-group form-inline">
+                <h4> Tìm học sinh: @Html.TextBox("SearchString", "", new { @class = "form-control" })  <input type="submit" class="btn btn-default" value="Tìm" /> </h4>
+            </div>
+            <table class="table">
+                <tr>
+                    <th style="color:black">
+                        <span>Mã Bảng Điểm</span>
+                    </th>
+                    <th style="color:black">
+                        <span>Mã Học Sinh</span>
+                    </th>
+                    <th style="color:black">
+                        <span>Tên Học Sinh</span>
+                    </th>
+                    <th style="color:black">
+                        <span>Môn</span>
+                    </th>
+                    <th style="color:black">
+                        <span>Điểm</span>
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.MaBD)
+                        </td>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.MaHS)
+                        </td>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.TenHS)
+                        </td>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.TenMon)
+                        </td>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.Diem)
+                        </td>
+                        <td style="color:black">
+                            <button class="btn" onclick="NavigateToEdit('@item.MaBD', event)">Cập Nhật</button>
+
+                            <button class="btn" onclick="NavigateToDelete('@item.MaBD', event)">Xóa</button>
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+    </section>
+</section>
+
+<script>
+    function NavigateToEdit(id_score, event) {
+        event.preventDefault();
+        window.location.href = "/BangDiem/ChinhSua/" + id_score;
+    }
+    
+    function NavigateToDelete(id_score, event) {
+        event.preventDefault();
+        window.location.href = "/BangDiem/Xoa/" + id_score;
+    }
+</script>

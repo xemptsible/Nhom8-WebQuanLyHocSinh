@@ -1,0 +1,48 @@
+﻿@model IEnumerable<QLHS.Models.KhoaHoc>
+
+@{
+    ViewBag.Title = "Danh Sách Khóa Học";
+    Layout = "~/Views/Shared/_LayoutMainAdmin.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <h2>Danh Sách Khóa Học</h2>
+        @using (Html.BeginForm("DanhSachKhoaHoc", "KhoaHoc", FormMethod.Get))
+        {
+            <div class="form-group form-inline">
+                <h4> Tìm khóa học: @Html.TextBox("SearchString", "", new { @class = "form-control" })  <input type="submit" class="btn btn-default" value="Tìm" /> </h4>
+            </div>
+            <table class="table">
+                <tr>
+                    <th style="color:black">
+                        <span>Mã Khóa</span>
+                    </th>
+                    <th style="color:black">
+                        <span>Tên Khóa Học</span>
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.MaKhoa)
+                        </td>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.TenKhoa)
+                        </td>
+                        <td style="color:black">
+                            <button class="btn">@Html.ActionLink("Cập nhật", "ChinhSua", new { id = item.MaKhoa }) </button>
+                            <button class="btn">@Html.ActionLink("Xóa", "Xoa", new { id = item.MaKhoa }) </button>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        }
+
+    </section>
+</section>
+

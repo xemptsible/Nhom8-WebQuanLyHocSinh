@@ -1,0 +1,78 @@
+﻿@model QLHS.Models.GiaoVien
+
+@{
+    ViewBag.Title = "Chi Tiết";
+    Layout = "~/Views/Shared/_LayoutMainAdmin.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <section class="w3l-hotair-form">
+            <div class="container">
+                <!-- /form -->
+                <div class="workinghny-form-grid">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="main-hotair">
+                            <div class="content-wthree">
+                                @Html.AntiForgeryToken()
+                                <h3>Thông tin giáo viên</h3>
+                                <form action="#" method="post">
+                                    <div class="user-detail">
+                                        <div class="input-box">
+                                            <span class="detail">Mã Giáo Viên: @Html.DisplayFor(model => model.MaGV)</span>
+                                        </div>
+                                        <h1></h1>
+                                        <div class="input-box">
+                                            <span class="detail">Tài Khoản: @Html.DisplayFor(model => model.TAIKHOAN)</span>
+                                            <h1></h1>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Mật Khẩu: @Html.DisplayFor(model => model.MATKHAU)</span>
+                                            <h1></h1>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Họ Tên GV: @Html.DisplayFor(model => model.HoTenGV)</span>
+                                            <h1></h1>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Giới Tính: @Html.DisplayFor(model => model.GioiTinh)</span>
+                                            <h1></h1>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Ngày Sinh: @Html.DisplayFor(model => model.NgaySinh)</span>
+                                            <h1></h1>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Địa Chỉ: @Html.DisplayFor(model => model.DiaChi)</span>
+                                            <h1></h1>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">SĐT: @Html.DisplayFor(model => model.SDT)</span>
+                                            <h1></h1>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Vai Trò: @Html.DisplayFor(model => model.Role)</span>
+                                            <h1></h1>
+                                        </div>
+                                    </div>
+                                    <button class="btn">@Html.ActionLink(".", "DanhSachGiaoVien")Trở về</button>
+                                    <h1></h1>
+                                    <button class="btn">@Html.ActionLink(".", "ChinhSua", new { id = Model.MaGV })Cập Nhật</button>
+                                </form>
+                            </div>
+                            <div class="w3l_form align-self">
+                                <div class="left_grid_info">
+                                    <img src="~/images/1.png" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <!-- //form -->
+            </div>
+        </section>
+    </section>
+</section>
+
+

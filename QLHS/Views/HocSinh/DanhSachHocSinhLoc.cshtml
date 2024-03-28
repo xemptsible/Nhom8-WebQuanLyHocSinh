@@ -1,0 +1,71 @@
+﻿@model IEnumerable<QLHS.Models.HocSinh>
+
+@{
+    ViewBag.Title = "DanhSachHocSinh";
+    Layout = "~/Views/Shared/_LayoutMainAdmin.cshtml";
+}
+<section id="main-content">
+    <section class="wrapper">
+        <h2>Danh Sách Học Sinh</h2>
+        @using (Html.BeginForm("DanhSachHocSinh", "HocSinh", FormMethod.Get))
+        {
+            <div class="form-group form-inline">
+                <h4> Tìm học sinh: @Html.TextBox("SearchString", "", new { @class = "form-control" })  <input type="submit" class="btn btn-default" value="Tìm" /> </h4>
+            </div>
+            <table class="table">
+                <tr>
+                    <th style="color: black">
+                        <span>Mã HS</span>
+                    </th>
+                    <th style="color: black">
+                        <span>Họ Tên</span>
+                    </th>
+                    <th style="color: black">
+                        <span>Tên Lớp</span>
+                    </th>
+                    <th style="color: black">
+                        <span>Giới Tính</span>
+                    </th>
+                    <th style="color: black">
+                        <span>Ngày Sinh</span>
+                    </th>
+                    <th style="color: black">
+                        <span>Địa Chỉ</span>
+                    </th>
+                    <th style="color: black">
+                        <span>Khóa</span>
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="color: black">
+                            @Html.DisplayFor(modelItem => item.MaHS)
+                        </td>
+                        <td style="color: black">
+                            @Html.DisplayFor(modelItem => item.HoTen)
+                        </td>
+                        <td style="color: black">
+                            @Html.DisplayFor(modelItem => item.TenLop)
+                        </td>
+                        <td style="color: black">
+                            @Html.DisplayFor(modelItem => item.GioiTinh)
+                        </td>
+                        <td style="color: black">
+                            @Html.DisplayFor(modelItem => item.NgaySinh)
+                        </td>
+                        <td style="color: black">
+                            @Html.DisplayFor(modelItem => item.DiaChi)
+                        </td>
+                        <td style="color: black">
+                            @Html.DisplayFor(modelItem => item.TenKhoa)
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        }
+    </section>
+</section>

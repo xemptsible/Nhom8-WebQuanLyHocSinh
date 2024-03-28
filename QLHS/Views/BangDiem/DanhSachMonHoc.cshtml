@@ -1,0 +1,46 @@
+﻿@model IEnumerable<QLHS.Models.MonHoc>
+
+@{
+    ViewBag.Title = "Chọn Môn";
+    Layout = "~/Views/Shared/_LayoutMainAdmin.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <h2>Chọn Môn Học</h2>
+        @using (Html.BeginForm("DanhSachMonHoc", "MonHoc", FormMethod.Get))
+        {
+            <div class="form-group form-inline">
+                <h4> Tìm môn học: @Html.TextBox("SearchString", "", new { @class = "form-control" })  <input type="submit" class="btn btn-default" value="Tìm" /> </h4>
+            </div>
+            <table class="table">
+                <tr>
+                    <th style="color:black">
+                        <span>Mã Môn</span>
+                    </th>
+                    <th style="color:black">
+                        <span>Tên Môn</span>
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.MaMon)
+                        </td>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.TenMon)
+                        </td>
+                        <td style="color:black">
+                            <button class="btn">@Html.ActionLink("Chọn", "ChonMonHoc", new { id_subject = item.MaMon }, null)</button>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        }
+
+    </section>
+</section>

@@ -1,0 +1,119 @@
+﻿@model QLHS.Models.HocSinh
+
+@{
+    ViewBag.Title = "Cập Nhật";
+    Layout = "~/Views/Shared/_LayoutMainAdmin.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <section class="w3l-hotair-form">
+            <div class="container">
+                <!-- /form -->
+                <div class="workinghny-form-grid">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="main-hotair">
+                            <div class="content-wthree">
+                                @Html.AntiForgeryToken()
+                                <h3>Cập nhật thông tin học sinh</h3>
+                                <form action="#" method="post">
+                                    <div class="user-detail">
+                                        <div class="input-box">
+                                            <span class="detail">Mã Học Sinh</span>
+                                            <div class="col-r-12">
+                                                @Html.EditorFor(model => model.MaHS, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.MaHS, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Họ và Tên</span>
+                                            <div class="col-r-12">
+                                                @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Lớp</span>
+                                            <div class="col-r-12">
+                                                @Html.DropDownListFor(model => model.Lop, (SelectList)ViewBag.selectClass)
+                                                @Html.HiddenFor(model => model.Lop)
+                                            </div>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Giới Tính</span>
+                                            <div class="col-r-12">
+                                                @Html.EditorFor(model => model.GioiTinh, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Ngày Sinh</span>
+                                            <div class="col-r-12">
+                                                @Html.EditorFor(model => model.NgaySinh, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Địa Chỉ</span>
+                                            <div class="col-r-12">
+                                                @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Khóa</span>
+                                            <div class="col-r-12">
+                                                @Html.EditorFor(model => model.Khoa, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Khoa, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Họ Tên Cha</span>
+                                            <div class="col-r-12">
+                                                @Html.EditorFor(model => model.HoTenCha, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.HoTenCha, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Họ Tên Mẹ</span>
+                                            <div class="col-r-12">
+                                                @Html.EditorFor(model => model.HoTenMe, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.HoTenMe, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">SĐT</span>
+                                            <div class="col-r-12">
+                                                @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Mật Khẩu</span>
+                                            <div class="col-r-12">
+                                                @Html.EditorFor(model => model.MATKHAU, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.MATKHAU, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn" type="submit">Save</button>
+                                    <h1></h1>
+                                    <div>
+                                        @Html.ActionLink("Trở về", "DanhSachHocSinh")
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="w3l_form align-self">
+                                <div class="left_grid_info">
+                                    <img src="~/images/1.png" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <!-- //form -->
+            </div>
+        </section>
+    </section>
+</section>

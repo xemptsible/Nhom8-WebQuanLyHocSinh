@@ -1,0 +1,99 @@
+﻿@model QLHS.Models.HocSinh
+
+@{
+    ViewBag.Title = "Thêm Học Sinh";
+    Layout = "~/Views/Shared/_LayoutMainAdmin.cshtml";
+}
+
+<style>
+    .field-validation-error {
+        color: red;
+    }
+</style>
+
+<section id="main-content">
+    <section class="wrapper">
+        <section class="w3l-hotair-form">
+            <div class="container">
+                <!-- /form -->
+                <div class="workinghny-form-grid">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="main-hotair">
+                            <div class="content-wthree">
+                                @Html.AntiForgeryToken()
+                                <h3>Thêm Học Sinh</h3>
+                                <form action="#" method="post">
+                                    <div class="user-detail">
+                                        <div class="input-box">
+                                            <span class="detail">Họ tên Học Sinh</span>
+                                            @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control", style = "field-validation-error" } })
+                                            @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Danh Sách Lớp hiện có</span>
+                                            @Html.DropDownListFor(model => model.Lop, (SelectList)ViewBag.selectClass, "Chọn lớp", new { @class = "form-control" })
+                                        </div>
+                                        <h1></h1>
+                                        <div class="input-box">
+                                            <span class="detail">Giới Tính</span>
+                                            @Html.EditorFor(model => model.GioiTinh, new { htmlAttributes = new { @class = "form-control", style = "field-validation-error" } })
+                                            @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Ngày Sinh</span>
+                                            @Html.EditorFor(model => model.NgaySinh, new { htmlAttributes = new { @class = "form-control", style = "field-validation-error" } })
+                                            @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Địa Chỉ</span>
+                                            @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control", style = "field-validation-error" } })
+                                            @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Khóa</span>
+                                            @Html.DropDownListFor(model => model.Khoa, (SelectList)ViewBag.selectCourse, "Chọn khóa", new { @class = "form-control" })
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Họ Tên Cha</span>
+                                            @Html.EditorFor(model => model.HoTenCha, new { htmlAttributes = new { @class = "form-control", style = "field-validation-error" } })
+                                            @Html.ValidationMessageFor(model => model.HoTenCha, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Họ Tên Mẹ</span>
+                                            @Html.EditorFor(model => model.HoTenMe, new { htmlAttributes = new { @class = "form-control", style = "field-validation-error" } })
+                                            @Html.ValidationMessageFor(model => model.HoTenMe, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Số Điện Thoại</span>
+                                            @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control", style = "field-validation-error" } })
+                                            @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Mật Khẩu</span>
+                                            @Html.EditorFor(model => model.MATKHAU, new { htmlAttributes = new { @class = "form-control", style = "field-validation-error" } })
+                                            @Html.ValidationMessageFor(model => model.MATKHAU, "", new { @class = "text-danger" })
+                                        </div>
+                                        @if (ViewBag.ErrorMessage != null)
+                                        {
+                                            <div class="input-box" style="color: red">
+                                                <span class="detail">@ViewBag.ErrorMessage</span>
+                                            </div>
+                                        }
+                                    </div>
+                                    <button class="btn" type="submit">Thêm</button>
+                                </form>
+                            </div>
+                            <div class="w3l_form align-self">
+                                <div class="left_grid_info">
+                                    <img src="~/images/1.png" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <!-- //form -->
+            </div>
+        </section>
+    </section>
+</section>

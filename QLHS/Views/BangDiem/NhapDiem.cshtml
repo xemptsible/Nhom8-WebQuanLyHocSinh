@@ -1,0 +1,71 @@
+﻿@model QLHS.Models.ViewModels.DiemViewModel
+
+
+@{
+    ViewBag.Title = "Thêm Điểm";
+    Layout = "~/Views/Shared/_LayoutMainAdmin.cshtml";
+}
+
+<style>
+    .field-validation-error {
+        color: red;
+    }
+</style>
+
+<section id="main-content">
+    <section class="wrapper">
+        <section class="w3l-hotair-form">
+            <div class="container">
+                <!-- /form -->
+                <div class="workinghny-form-grid">
+                    @using (Html.BeginForm("LuuDiem", "BangDiem", FormMethod.Post))
+                    {
+                        <div class="main-hotair">
+                            <div class="content-wthree">
+                                @Html.AntiForgeryToken()
+                                <h3>Nhập Điểm</h3>
+                                <form action="#" method="post">
+                                    <div class="user-detail">
+                                        <div class="user-detail">
+                                            <div class="input-box">
+                                                @Html.LabelFor(model => model.Diem, "Điểm")
+                                                @Html.TextBoxFor(model => model.Diem, new { @class = "form-control" })
+                                                <span class="field-validation-error" id="error-message"></span>
+                                            </div>
+                                        </div>
+                                        @if (ViewBag.ErrorMessage != null)
+                                        {
+                                            <div class="input-box">
+                                                <span class="detail" style="color: red">@ViewBag.ErrorMessage</span>
+                                            </div>
+                                        }
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Lưu Điểm</button>
+                                </form>
+                            </div>
+                            <div class="w3l_form align-self">
+                                <div class="left_grid_info">
+                                    <img src="~/images/1.png" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <!-- //form -->
+            </div>
+        </section>
+    </section>
+</section>
+
+<script>
+    $(document).ready(function () {
+        $("form").submit(function (e) {
+            var diem = parseFloat($("#Diem").val());
+            if (diem < 0 || diem > 10 || isNaN(diem)) {
+                e.preventDefault(); // Ngăn form submit
+                $("#error-message").text("Điểm phải nằm trong khoảng từ 0 đến 10.");
+            }
+        });
+    });
+</script>
+

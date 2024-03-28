@@ -1,0 +1,84 @@
+﻿@model QLHS.Models.ViPham
+
+@{
+    ViewBag.Title = "Chỉnh Sửa";
+    Layout = "~/Views/Shared/_LayoutMainAdmin.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <section class="w3l-hotair-form">
+            <div class="container">
+                <!-- /form -->
+                <div class="workinghny-form-grid">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="main-hotair">
+                            <div class="content-wthree">
+                                @Html.AntiForgeryToken()
+                                <h3>Cập nhật vi phạm</h3>
+                                <form action="#" method="post">
+                                    <div class="user-detail">
+                                        <div class="input-box">
+                                            <span class="detail">Mã VP</span>
+                                            <div class="col-r-12">
+                                                @Html.EditorFor(model => model.MaVP, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.MaVP, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Mã Học Sinh</span>
+                                            <div class="col-r-12">
+                                                @Html.DropDownListFor(model => model.MaHS, (SelectList)ViewBag.selectStudent)
+                                                @Html.HiddenFor(model => model.MaHS)
+                                            </div>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Lỗi Vi Phạm</span>
+                                            <div class="col-r-12">
+                                                @Html.EditorFor(model => model.LoiVP, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.LoiVP, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Mức Độ</span>
+                                            <div class="col-r-12">
+                                                @Html.EditorFor(model => model.MucDo, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.MucDo, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Người Ghi Nhận</span>
+                                            <div class="col-r-12">
+                                                @Html.DropDownListFor(model => model.NguoiGhiNhan, (SelectList)ViewBag.selectTeacher)
+                                                @Html.HiddenFor(model => model.NguoiGhiNhan)
+                                            </div>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Ngày Ghi Nhận</span>
+                                            <div class="col-r-12">
+                                                @Html.EditorFor(model => model.Ngay, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Ngay, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn" type="submit">Save</button>
+                                    <h1></h1>
+                                    <div>
+                                        @Html.ActionLink("Trở về", "DanhSachViPham")
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="w3l_form align-self">
+                                <div class="left_grid_info">
+                                    <img src="~/images/1.png" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <!-- //form -->
+            </div>
+        </section>
+    </section>
+</section>

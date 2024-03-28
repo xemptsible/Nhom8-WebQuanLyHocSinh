@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Trang Bắt Đầu";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<section class="w3l-hotair-form">
+    <div class="container">
+        <div class="workinghny-form-grid">
+            <div class="main-hotair">
+                <div class="content-wthree">
+                    <br />
+                    <br />
+                    <br />
+                    <button id="loginButton_Teacher" style="color:#fff">Đăng nhập bằng tài khoản giáo viên</button>
+                    <span class="detail">-----------------------------------------------------------------</span>
+                    <button id="loginButton_Student" style="color:#fff">Đăng nhập bằng tài khoản học sinh</button>
+                </div>
+                <div class="w3l_form align-self">
+                    <div class="left_grid_info">
+                        <img src="~/images/1.png" alt="" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.getElementById("loginButton_Teacher").onclick = function () {
+        window.location.href = "/TaiKhoanGiaoVien/DangNhap";
+    };
+
+    document.getElementById("loginButton_Student").onclick = function () {
+        window.location.href = "/TaiKhoanHocSinh/DangNhap";
+    };
+</script>

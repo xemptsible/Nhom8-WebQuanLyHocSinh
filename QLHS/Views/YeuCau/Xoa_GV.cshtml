@@ -1,0 +1,60 @@
+﻿@model QLHS.Models.YeuCau
+
+@{
+    ViewBag.Title = "Xoa";
+    Layout = "~/Views/Shared/_LayoutMainGV.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <section class="w3l-hotair-form">
+            <div class="container">
+                <!-- /form -->
+                <div class="workinghny-form-grid">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="main-hotair">
+                            <div class="content-wthree">
+                                @Html.AntiForgeryToken()
+                                <h3>Xóa Yêu Cầu</h3>
+                                <form action="#" method="post">
+                                    <div class="user-detail">
+                                        <div class="input-box">
+                                            <span class="detail">Mã Yêu Cầu: @Html.DisplayFor(model => model.MaYC)</span>
+                                        </div>
+                                        <h1></h1>
+                                        <div class="input-box">
+                                            <span class="detail">Mã Giáo Viên: @Html.DisplayFor(model => model.MaGV)</span>
+                                            <h1></h1>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Nội dung: @Html.DisplayFor(model => model.NoiDung)</span>
+                                            <h1></h1>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Lí do: @Html.DisplayFor(model => model.LiDo)</span>
+                                            <h1></h1>
+                                        </div>
+                                    </div>
+                                    <button class="btn" type="submit">Xóa</button>
+                                    <h1></h1>
+                                    <div>
+                                        @Html.ActionLink("Trở về", "PhanHoi")
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="w3l_form align-self">
+                                <div class="left_grid_info">
+                                    <img src="~/images/1.png" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <!-- //form -->
+            </div>
+        </section>
+    </section>
+</section>
+
+

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<QLHS.Models.ViPham>
+
+@{
+    ViewBag.Title = "Xem Vi Phạm";
+    Layout = "~/Views/Shared/_LayoutMainHS.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <h2>Điểm Thi</h2>
+        @using (Html.BeginForm("XemViPham", "ViPham", FormMethod.Get))
+        {
+            <table class="table">
+                <tr>
+                    <th style="color:black">
+                        <span>Mã Vi Phạm</span>
+                    </th>
+                    <th style="color:black">
+                        <span>Lỗi Vi Phạm</span>
+                    </th>
+                    <th style="color:black">
+                        <span>Mức Độ</span>
+                    </th>
+                    <th style="color:black">
+                        <span>Người Ghi Nhận</span>
+                    </th>
+                    <th style="color:black">
+                        <span>Ngày</span>
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.MaVP)
+                        </td>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.LoiVP)
+                        </td>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.MucDo)
+                        </td>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.TenNguoiGhiNhan)
+                        </td>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.Ngay)
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        }
+
+    </section>
+</section>

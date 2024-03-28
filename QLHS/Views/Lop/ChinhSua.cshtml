@@ -1,0 +1,86 @@
+﻿@model QLHS.Models.Lop
+
+@{
+    ViewBag.Title = "ChinhSua";
+    Layout = "~/Views/Shared/_LayoutMainAdmin.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <section class="w3l-hotair-form">
+            <div class="container">
+                <!-- /form -->
+                <div class="workinghny-form-grid">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="main-hotair">
+                            <div class="content-wthree">
+                                @Html.AntiForgeryToken()
+                                <h3>Cập nhật lớp học</h3>
+                                <form action="#" method="post">
+                                    <div class="user-detail">
+                                        <div class="input-box">
+                                            <span class="detail">Mã Lớp</span>
+                                            <div class="col-r-12">
+                                                @Html.EditorFor(model => model.MaLop, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.MaLop, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Tên Lớp</span>
+                                            <div class="col-r-12">
+                                                @Html.EditorFor(model => model.TenLop, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.TenLop, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Khối</span>
+                                            <div class="col-r-12">
+                                                @Html.DropDownListFor(model => model.Khoi, (SelectList)ViewBag.selectGrade)
+                                                @Html.HiddenFor(model => model.Khoi)
+                                            </div>
+                                        </div>
+                                        <h1></h1>
+                                        <div class="input-box">
+                                            <span class="detail">Năm Học</span>
+                                            <div class="col-r-12">
+                                                @Html.EditorFor(model => model.NamHoc, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.NamHoc, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Số Lượng</span>
+                                            <div class="col-r-12">
+                                                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">GVCN</span>
+                                            <div class="col-r-12">
+                                                @Html.DropDownListFor(model => model.GVCN, (SelectList)ViewBag.selectTeacher)
+                                                @Html.HiddenFor(model => model.GVCN)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h1></h1>
+                                    <button class="btn" type="submit">Save</button>
+                                    <h1></h1>
+                                    <div>
+                                        @Html.ActionLink("Trở về", "DanhSachLop")
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="w3l_form align-self">
+                                <div class="left_grid_info">
+                                    <img src="~/images/1.png" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <!-- //form -->
+            </div>
+        </section>
+    </section>
+</section>

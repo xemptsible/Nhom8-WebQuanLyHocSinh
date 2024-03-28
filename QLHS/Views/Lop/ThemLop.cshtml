@@ -1,0 +1,78 @@
+﻿@model QLHS.Models.Lop
+
+@{
+    ViewBag.Title = "Thêm Lớp";
+    Layout = "~/Views/Shared/_LayoutMainAdmin.cshtml";
+}
+
+<style>
+    .field-validation-error {
+        color: red;
+    }
+</style>
+
+<section id="main-content">
+    <section class="wrapper">
+        <section class="w3l-hotair-form">
+            <div class="container">
+                <!-- /form -->
+                <div class="workinghny-form-grid">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="main-hotair">
+                            <div class="content-wthree">
+                                @Html.AntiForgeryToken()
+                                <h3>Thêm lớp</h3>
+                                <form action="#" method="post">
+                                    <div class="user-detail">
+                                        <div class="input-box">
+                                            <span class="detail">Tên Lớp</span>
+                                            @Html.EditorFor(model => model.TenLop, new { htmlAttributes = new { @class = "input", style = "field-validation-error" } })
+                                            @Html.ValidationMessageFor(model => model.TenLop, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Khối</span>
+                                            @Html.DropDownListFor(model => model.Khoi, (SelectList)ViewBag.selectGrade, "Chọn Khối", new { @class = "form-control" })
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Năm Học</span>
+                                            @Html.EditorFor(model => model.NamHoc, new { htmlAttributes = new { @class = "input", style = "field-validation-error" } })
+                                            @Html.ValidationMessageFor(model => model.NamHoc, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Số Lượng</span>
+                                            @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "input", style = "field-validation-error" } })
+                                            @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">GVCN</span>
+                                            @Html.DropDownListFor(model => model.GVCN, (SelectList)ViewBag.selectTeacher, "Chọn GVCN", new { @class = "form-control" })
+                                        </div>
+                                        <br />
+                                        @if (ViewBag.ErrorMessage != null)
+                                        {
+                                            <div class="input-box">
+                                                <span class="detail" style="color: red">@ViewBag.ErrorMessage</span>
+                                            </div>
+                                        }
+                                    </div>
+                                    <button class="btn" type="submit">Thêm</button>
+                                </form>
+                            </div>
+                            <div class="w3l_form align-self">
+                                <div class="left_grid_info">
+                                    <img src="~/images/1.png" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <!-- //form -->
+            </div>
+        </section>
+    </section>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>

@@ -1,0 +1,83 @@
+﻿@model QLHS.Models.HocSinh
+
+@{
+    ViewBag.Title = "Chi Tiết";
+    Layout = "~/Views/Shared/_LayoutMainHS.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <section class="w3l-hotair-form">
+            <div class="container">
+                <!-- /form -->
+                <div class="workinghny-form-grid">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="main-hotair">
+                            <div class="content-wthree">
+                                @Html.AntiForgeryToken()
+                                <h3>Thông tin cá nhân</h3>
+                                <form action="#" method="post">
+                                    <div class="user-detail">
+                                        <div class="input-box">
+                                            <span class="detail">Mã Học Sinh: @Html.DisplayFor(model => model.MaHS)</span>
+                                            <h1></h1>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Tên: @Html.DisplayFor(model => model.HoTen)</span>
+                                            <h1></h1>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Lớp: @Html.DisplayFor(model => model.Lop)</span>
+                                            <h1></h1>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Giới Tính: @Html.DisplayFor(model => model.GioiTinh)</span>
+                                            <h1></h1>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Ngày Sinh: @Html.DisplayFor(model => model.NgaySinh)</span>
+                                            <h1></h1>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Địa Chỉ: @Html.DisplayFor(model => model.DiaChi)</span>
+                                            <h1></h1>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Địa Chỉ: @Html.DisplayFor(model => model.DiaChi)</span>
+                                            <h1></h1>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Khóa: @Html.DisplayFor(model => model.Khoa)</span>
+                                            <h1></h1>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Họ Tên Cha: @Html.DisplayFor(model => model.HoTenCha)</span>
+                                            <h1></h1>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">Họ Tên Mẹ: @Html.DisplayFor(model => model.HoTenMe)</span>
+                                            <h1></h1>
+                                        </div>
+                                        <div class="input-box">
+                                            <span class="detail">SĐT: @Html.DisplayFor(model => model.SDT)</span>
+                                            <h1></h1>
+                                        </div>
+                                    </div>
+                                    <h1></h1>
+                                </form>
+                            </div>
+                            <div class="w3l_form align-self">
+                                <div class="left_grid_info">
+                                    <img src="~/images/1.png" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <!-- //form -->
+            </div>
+        </section>
+    </section>
+</section>
+

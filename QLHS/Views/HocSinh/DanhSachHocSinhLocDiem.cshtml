@@ -1,0 +1,67 @@
+﻿@model IEnumerable<QLHS.Models.HocSinh>
+
+@{
+    ViewBag.Title = "DanhSachHocSinh";
+    Layout = "~/Views/Shared/_LayoutMainAdmin.cshtml";
+}
+<section id="main-content">
+    <section class="wrapper">
+        <h2>Danh Sách Học Sinh</h2>
+        @using (Html.BeginForm("DanhSachHocSinhLocDiem", "HocSinh", FormMethod.Get))
+        {
+            <table class="table">
+                <tr>
+                    <th style="color: black">
+                        <span>Mã HS</span>
+                    </th>
+                    <th style="color: black">
+                        <span>Họ Tên</span>
+                    </th>
+                    <th style="color: black">
+                        <span>Tên Lớp</span>
+                    </th>
+                    <th style="color: black">
+                        <span>Giới Tính</span>
+                    </th>
+                    <th style="color: black">
+                        <span>Điểm</span>
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="color: black">
+                            @Html.DisplayFor(modelItem => item.MaHS)
+                        </td>
+                        <td style="color: black">
+                            @Html.DisplayFor(modelItem => item.HoTen)
+                        </td>
+                        <td style="color: black">
+                            @Html.DisplayFor(modelItem => item.TenLop)
+                        </td>
+                        <td style="color: black">
+                            @Html.DisplayFor(modelItem => item.GioiTinh)
+                        </td>
+                        <td style="color: black">
+                            @if (Session["MaMonHoc"] != null)
+                            {
+                                int id_subject = (int)Session["MaMonHoc"];
+                                var score = item.BangDiems.FirstOrDefault(d => d.MaMon == id_subject);
+                                if (score != null)
+                                {
+                                    @score.Diem
+                                }
+                            }
+                        </td>
+                        <td style="color: black">
+                            <button class="btn">@Html.ActionLink("Chọn", "ChonHocSinh", new { id_student = item.MaHS }, null)</button>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        }
+    </section>
+</section>

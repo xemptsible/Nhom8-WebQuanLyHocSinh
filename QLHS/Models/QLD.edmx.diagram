@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f7d00a31c04d4a89ad8122e2a5543d41" Name="Diagram1">
+        <EntityTypeShape EntityType="QLDModel.BangDiem" Width="1.5" PointX="7.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDModel.GiaoVien" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDModel.HocSinh" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDModel.KhoaHoc" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDModel.Khoi" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDModel.Lop" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDModel.MonHoc" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDModel.ViPham" Width="1.5" PointX="10.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDModel.YeuCau" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <AssociationConnector Association="QLDModel.FK_HS_BangDiem" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDModel.FK_HS_BangDiem1" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDModel.FK_HS_Lop" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDModel.FK_HS_ViPham1" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDModel.FK_HS_YC" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDModel.FK_HS_HocSinh" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDModel.FK_HS_HocSinh1" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDModel.FK_HS_ViPham" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDModel.FK_HS_Lop1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

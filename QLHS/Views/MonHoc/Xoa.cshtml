@@ -1,0 +1,50 @@
+﻿@model QLHS.Models.MonHoc
+
+@{
+    ViewBag.Title = "Xóa";
+    Layout = "~/Views/Shared/_LayoutMainAdmin.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <section class="w3l-hotair-form">
+            <div class="container">
+                <!-- /form -->
+                <div class="workinghny-form-grid">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="main-hotair">
+                            <div class="content-wthree">
+                                @Html.AntiForgeryToken()
+                                <h3>Xóa môn học</h3>
+                                <form action="#" method="post">
+                                    <div class="user-detail">
+                                        <div class="input-box">
+                                            <span class="detail">Mã Môn: @Html.DisplayFor(model => model.MaMon)</span>
+                                        </div>
+                                        <h1></h1>
+                                        <div class="input-box">
+                                            <span class="detail">Tên Môn: @Html.DisplayFor(model => model.TenMon)</span>
+                                            <h1></h1>
+                                        </div>
+                                    </div>
+                                    <button class="btn" type="submit">Xóa</button>
+                                    <h1></h1>
+                                    <div>
+                                        @Html.ActionLink("Trở về", "DanhSachMonHoc")
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="w3l_form align-self">
+                                <div class="left_grid_info">
+                                    <img src="~/images/1.png" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <!-- //form -->
+            </div>
+        </section>
+    </section>
+</section>
